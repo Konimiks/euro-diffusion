@@ -1,5 +1,5 @@
 const getOutput = require('./src/index');
-getOutput('./data/dataset3').then(res => {
+getOutput('./data/dataset1').then(res => {
 	if(typeof res[0] == typeof new Error) {
 		console.log(res[0].message);
 	} else {
