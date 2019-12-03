@@ -1,0 +1,13 @@
+{
+  "name": "euro-diffusion-study",
+  "version": "1.0.0",
+  "description": "Euro diffusion model",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "node ./node_modules/jest/bin/jest.js"
+  },
+  "author": "konimiks",
+  "devDependencies": {
+    "jest": "^23.6.0"
+  }
+}
