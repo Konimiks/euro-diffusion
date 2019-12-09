@@ -10,11 +10,11 @@ class Map {
         this.grid = this.makeGrid()
     }
     makeGrid () {
-        const grid = new Array(10)
+        const grid = new Array(10);
         for (let i = 0; i < grid.length; i++) {
             grid[i] = new Array(10);
         }
-        return grid
+        return grid;
     }
 
     init () {
@@ -24,15 +24,15 @@ class Map {
 
     buildNeighbours () {
         this.cities.map((city) => {
-            const {x, y} = city
+            const {x, y} = city;
             if(this.westernCityExists(x, y))
-                city.addNeighbour(findCityByCoordinates(this.cities, x-1, y))
+                city.addNeighbour(findCityByCoordinates(this.cities, x-1, y));
             if(this.easternCityExists(x, y))
-                city.addNeighbour(findCityByCoordinates(this.cities, x+1, y))
+                city.addNeighbour(findCityByCoordinates(this.cities, x+1, y));
             if(this.northernCityExists(x, y))
-                city.addNeighbour(findCityByCoordinates(this.cities, x, y+1))
+                city.addNeighbour(findCityByCoordinates(this.cities, x, y+1));
             if(this.southernCityExists(x, y))
-                city.addNeighbour(findCityByCoordinates(this.cities, x, y-1))
+                city.addNeighbour(findCityByCoordinates(this.cities, x, y-1));
         })
     }
 

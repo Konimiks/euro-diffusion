@@ -4,12 +4,12 @@ const billMultiplier = 1/1000;
 
 class City {
     constructor (x, y) {
-        this.x = x
-        this.y = y
-        this.currentBalance = {}
-        this.incomingBalance = {}
-        this.outcomingBalance = {}
-        this.neighbours = []
+        this.x = x;
+        this.y = y;
+        this.currentBalance = {};
+        this.incomingBalance = {};
+        this.outcomingBalance = {};
+        this.neighbours = [];
     }
 
     receiveIncome (countryName, amount) {

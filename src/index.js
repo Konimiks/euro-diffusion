@@ -10,14 +10,19 @@ function compareChunkToString(chunk, string) {
 }
 
 function getCountryParams (stream) {
-    const params = []
+    const params = [];
+    let tmp = false;
     while (null !== (chunk = stream.read(1))) {
+	    if (compareChunkToString(chunk, '-')) {
+	        tmp = true;
+		    continue;
+        }
         if (compareChunkToString(chunk, ' '))
-            continue
+            continue;
         if (compareChunkToString(chunk, '\r'))
-            continue
+            continue;
         if (compareChunkToString(chunk, '\n'))
-            break
+            break;
         if(Number.isInteger(+chunk))
             params.push(+chunk)
       }
@@ -25,25 +30,30 @@ function getCountryParams (stream) {
 }
 
 function getCountryName (stream) {
-    let name = ''
+    let name = '';
     while (null !== (chunk = stream.read(1))) {
         if (compareChunkToString(chunk, '\r'))
-            continue
+            continue;
         if (compareChunkToString(chunk, '\n'))
-            continue
+            continue;
         if (compareChunkToString(chunk, ' '))
-            break
+            break;
         name = name.concat(chunk.toString())
       }
     return name
 }
 
 function areParamsValid (params) {
-    if (!(Array.isArray(params) && params.length === 4)) return false
-    if (!params.reduce((acc, param) => acc && isInBounds(param), true)) return false
-    if (!(params[0] <= params[2])) return false
-    if (!(params[1] <= params[3])) return false
-    return true
+    if (!(Array.isArray(params) && params.length === 4)) return false;
+    if (!params.reduce((acc, param) => acc && isInBounds(param), true)) return false;
+    if (!(params[0] <= params[2])) return false;
+    if (!(params[1] <= params[3])) return false;
+    if (params[0] < 1 || params[0] > 10) return false;
+	if (params[1] < 1 || params[1] > 10) return false;
+	if (params[2] < 1 || params[2] > 10) return false;
+	if (params[3] < 1 || params[3] > 10) return false;
+	if (params[0] === params[2] && params[1] === params[3]) return false;
+	return true
 }
 
 function processSingleCase(stream, countriesNumber) {
