@@ -1,6 +1,6 @@
 const getOutput = require('./src/index');
 getOutput('./data/dataset1').then(res => {
-	if(typeof res[0] == typeof new Error) {
+	if(res[0] instanceof Error) {
 		console.log(res[0].message);
 	} else {
 		for(let i = 0; i < res.length; i++) {
