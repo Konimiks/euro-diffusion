@@ -6,7 +6,7 @@ const Map = require('./Map');
 const isInBounds = require('./utils').isInBounds;
 
 function compareChunkToString(chunk, string) {
-    return Buffer.compare(chunk, Buffer.from(string)) === 0 ? true : false;
+    return Buffer.compare(chunk, Buffer.from(string)) === 0;
 }
 
 function getCountryParams (stream) {
@@ -17,9 +17,7 @@ function getCountryParams (stream) {
 	        tmp = true;
 		    continue;
         }
-        if (compareChunkToString(chunk, ' '))
-            continue;
-        if (compareChunkToString(chunk, '\r'))
+        if (compareChunkToString(chunk, ' ') || compareChunkToString(chunk, '\r'))
             continue;
         if (compareChunkToString(chunk, '\n'))
             break;
