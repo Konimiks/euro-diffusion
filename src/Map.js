@@ -1,5 +1,6 @@
 const City = require('./City');
 const { areInBounds, findCityByCoordinates } = require('./utils');
+const arraySizeTen = 10;
 
 class Map {
     constructor() {
@@ -10,9 +11,9 @@ class Map {
         this.grid = this.makeGrid()
     }
     makeGrid () {
-        const grid = new Array(10);
+        const grid = new Array(arraySizeTen);
         for (let i = 0; i < grid.length; i++) {
-            grid[i] = new Array(10);
+            grid[i] = new Array(arraySizeTen);
         }
         return grid;
     }
