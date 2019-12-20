@@ -5,6 +5,9 @@ const City = require('./City');
 const Map = require('./Map');
 const isInBounds = require('./utils').isInBounds;
 
+const minCoordinate = 1;
+const maxCoordinate = 10;
+
 function compareChunkToString(chunk, string) {
     return Buffer.compare(chunk, Buffer.from(string)) === 0;
 }
@@ -46,10 +49,10 @@ function areParamsValid (params) {
     if (!params.reduce((acc, param) => acc && isInBounds(param), true)) return false;
     if (!(params[0] <= params[2])) return false;
     if (!(params[1] <= params[3])) return false;
-    if (params[0] < 1 || params[0] > 10) return false;
-	if (params[1] < 1 || params[1] > 10) return false;
-	if (params[2] < 1 || params[2] > 10) return false;
-	if (params[3] < 1 || params[3] > 10) return false;
+    if (params[0] < minCoordinate || params[0] > maxCoordinate) return false;
+	if (params[1] < minCoordinate || params[1] > maxCoordinate) return false;
+	if (params[2] < minCoordinate || params[2] > maxCoordinate) return false;
+	if (params[3] < minCoordinate || params[3] > maxCoordinate) return false;
 	if (params[0] === params[2] && params[1] === params[3]) return false;
 	return true
 }

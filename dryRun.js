@@ -1,5 +1,5 @@
 const getOutput = require('./src/index');
-getOutput('./data/dataset2').then(res => {
+getOutput('./data/dataset1').then(res => {
 	//console.log(res);
 	for(let i = 0; i < res.length; i++) {
 		console.log(`Case Number ${i+1}`);

@@ -70,7 +70,7 @@ class Map {
         return this.cities.reduce((acc, city) => {
             if(!city.checkReadyStatus(this.countries)) {
                 city.country.judgmentDay = -1
-                return acc && false
+                return false
             } else {
                 return acc
             }
